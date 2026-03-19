@@ -16,6 +16,10 @@ namespace mapa_slepa
     /// </summary>
     public partial class MainWindow : Window 
     {
+        Random rnd = new Random();
+        MapPoint activePoint;
+        int score = 0;
+        int round = 0;
         List<MapPoint> points = new List<MapPoint>()
         {
             new MapPoint() { Name = "Praha", XPercent = 0.365, YPercent = 0.39 },
@@ -32,6 +36,7 @@ namespace mapa_slepa
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             DrawPoints();
+            NextRound();
         }
 
         private void MapImage_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -68,7 +73,18 @@ namespace mapa_slepa
             Button btn = sender as Button;
             MapPoint point = btn.Tag as MapPoint;
 
-            MessageBox.Show(point.Name);
+            if (point == activePoint)
+            {
+                score++;
+                MessageBox.Show("Správně!");
+            }
+            else
+            {
+                MessageBox.Show($"Špatně!");
+            }
+
+            round++;
+            NextRound();
         }
         private void MapImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -78,6 +94,20 @@ namespace mapa_slepa
             double yPercent = pos.Y / MapImage.ActualHeight;
 
             MessageBox.Show($"{xPercent:F4} , {yPercent:F4}");
+        }
+
+        void NextRound()
+        {
+            if (round >= points.Count)
+            {
+                MessageBox.Show($"Konec hry! Skóre: {score}/{points.Count}");
+                return;
+            }
+
+            activePoint = points[rnd.Next(points.Count)];
+            Question.Text = $"Najdi město: {activePoint.Name}";
+            Points.Text = $"Skóre: {score}";
+            Turn.Text = $"Kolo {round + 1}";
         }
     }
 }
