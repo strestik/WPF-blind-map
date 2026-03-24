@@ -22,9 +22,9 @@ namespace mapa_slepa
         int round = 1;
         List<MapPoint> points = new List<MapPoint>()
         {
-            new MapPoint() { Name = "Praha", XPercent = 0.365, YPercent = 0.39 },
-            new MapPoint() { Name = "Brno", XPercent = 0.685, YPercent = 0.71 },
-            new MapPoint() { Name = "Aš", XPercent = 0.047, YPercent = 0.32 },
+            new MapPoint() { Name = "Město 1", XPercent = 0.365, YPercent = 0.39, answer = "Praha" }, // Praha
+            new MapPoint() { Name = "Město 2", XPercent = 0.685, YPercent = 0.71, answer = "Brno"}, // Brno
+            new MapPoint() { Name = "Město 3", XPercent = 0.047, YPercent = 0.32, answer = "Aš" }, // Aš
         };
 
         public MainWindow()
@@ -106,7 +106,7 @@ namespace mapa_slepa
             }
 
             activePoint = points[rnd.Next(points.Count)];
-            Question.Text = $"Najdi město: {activePoint.Name}";
+            Question.Text = $"Najdi město: {activePoint.answer}";
             Points.Text = $"Skóre: {score}";
             Turn.Text = $"Kolo {round}";
         }
