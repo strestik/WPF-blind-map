@@ -19,7 +19,7 @@ namespace mapa_slepa
         Random rnd = new Random();
         MapPoint activePoint;
         int score = 0;
-        int round = 0;
+        int round = 1;
         List<MapPoint> points = new List<MapPoint>()
         {
             new MapPoint() { Name = "Praha", XPercent = 0.365, YPercent = 0.39 },
@@ -98,16 +98,17 @@ namespace mapa_slepa
 
         void NextRound()
         {
-            if (round >= points.Count)
+            if (round > points.Count)
             {
                 MessageBox.Show($"Konec hry! Skóre: {score}/{points.Count}");
+                Close();
                 return;
             }
 
             activePoint = points[rnd.Next(points.Count)];
             Question.Text = $"Najdi město: {activePoint.Name}";
             Points.Text = $"Skóre: {score}";
-            Turn.Text = $"Kolo {round + 1}";
+            Turn.Text = $"Kolo {round}";
         }
     }
 }

@@ -19,7 +19,7 @@
         <Canvas Name="OverlayCanvas"/>
         <TextBlock x:Name="Turn" HorizontalAlignment="Left" Margin="12,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="64" Width="209" FontSize="36"/>
         <TextBlock x:Name="Question" HorizontalAlignment="Left" Margin="336,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="64" Width="400" FontSize="36"/>
-        <TextBlock x:Name="Points" HorizontalAlignment="Left" Margin="741,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="64" Width="209" FontSize="36" RenderTransformOrigin="0.495,0.45"/>
+        <TextBlock x:Name="Points" HorizontalAlignment="Left" Margin="769,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="64" Width="181" FontSize="36" RenderTransformOrigin="0.513,0.492"/>
 
     </Grid>
 </Window>
